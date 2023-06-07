@@ -3,16 +3,17 @@ version: '3.8'
 
 services:
   mariadb:
-    restart: always
-    build: requirements/mariadb
     container_name: mariadb
-    image: mariadb
-    expose:
-      - "3306"
+    build: ./requirements/mariadb #되는거 보고 아래 코드로 대체
+    # build:
+    #   context: ./requirements/mariadb
+    #   dockerfile: dockerfile
     volumes:
       - mariadb-volume:/var/lib/mysql # /home/ejachoi/data/mariadb 디렉토리를 /var/lib/mysql에 매핑.
+    
     networks:
       - intra-network
+    restart: always
     env_file:
       - .env
 

@@ -3,7 +3,7 @@ VOLUME_SETUP_SH=./srcs/requirements/tools/volume.sh
 FCLEAN_SETUP_SH=./srcs/requirements/tools/fclean.sh
 
 DOCKER_COMPOSE_FILE = ./srcs/docker-compose.yml
-DOCKER_COMPOSE = docker compose --file $(DOCKER_COMPOSE_FILE)
+DOCKER_COMPOSE = docker compose -f $(DOCKER_COMPOSE_FILE)
 
 all: up
 
