@@ -4,10 +4,10 @@ version: '3.8'
 services:
   mariadb:
     container_name: mariadb
-    build: ./requirements/mariadb #되는거 보고 아래 코드로 대체
-    # build:
-    #   context: ./requirements/mariadb
-    #   dockerfile: dockerfile
+    # build: ./requirements/mariadb #되는거 보고 아래 코드로 대체
+    build:
+      context: ./requirements/mariadb
+      dockerfile: dockerfile
     volumes:
       - mariadb-volume:/var/lib/mysql # /home/ejachoi/data/mariadb 디렉토리를 /var/lib/mysql에 매핑.
     
@@ -21,7 +21,9 @@ services:
     depends_on:
       - mariadb
     restart: always # always: 컨테이너를 수동으로 끄기전까지 항상 재시작 됩니다.
-    build: requirements/wordpress
+    build:
+      context: ./requirements/wordpress
+      dockerfile: dockerfile
     container_name: wordpress
     image: wordpress
     expose:
@@ -37,7 +39,10 @@ services:
     depends_on:
       - wordpress
     restart: always # always: 컨테이너를 수동으로 끄기전까지 항상 재시작 됩니다.
-    build: requirements/nginx
+    # build: requirements/nginx
+    build:
+      context: ./requirements/nginx
+      dockerfile: dockerfile
     container_name: nginx
     image: nginx
     ports: # ? port로 명시한 부분이 바로 host와 연결하는 부분이다. 모든 서비스는 이 port를 통해 접속 가능함.
@@ -71,11 +76,9 @@ volumes:
       type: none
       o: bind # bind-mount을 사용해서, host의 file-system을 volume으로 사용한다.
       device: /home/ejachoi/data/mariadb    # ? 이건 linux에서 사용할 volume 경로 ( Subject 명시 )
-      # device: ../data/mariadb     # ! 이건 mac에서 사용할 volume 경로 --> 왜냐면 mac의 /home 경로가 linux와 구성이 다름.
   wordpress-volume: # volume 이름
     driver: local
     driver_opts:
       type: none
       o: bind # bind-mount을 사용해서, host의 file-system을 volume으로 사용한다.
       device: /home/ejachoi/data/wordpress  # ? 이건 linux에서 사용할 volume 경로 ( Subject 명시 )
-      # device: Users/ejachoi/goinfree/docker_study/inception2/data/wordpress     # ! 이건 mac에서 사용할 volume 경로 --> 왜냐면 mac의 /home 경로가 linux와 구성이 다름.

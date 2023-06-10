@@ -16,15 +16,15 @@ COPY ./tools/setup.sh /setup.sh
 RUN chmod +x setup.sh && \
     rm -f /etc/mysql/mariadb.conf.d/50-server.cnf
 
-EXPOSE 3306
-
-# COPY ./tools/setup.sh /usr/local/bin/
-# RUN chmod +x /usr/local/bin/setup.sh
-
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 
-# ENTRYPOINT ["sh", "/usr/local/bin/setup.sh"]
+EXPOSE 3306
 
-ENTRYPOINT ["sh", "/setup.sh"]
+COPY ./tools/setup.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/setup.sh
 
-CMD ["mysqld", "--bind-address=0.0.0.0"]
+ENTRYPOINT ["sh", "/usr/local/bin/setup.sh"]
+
+# ENTRYPOINT ["sh", "/setup.sh"]
+
+# CMD ["mysqld", "--bind-address=0.0.0.0"]
