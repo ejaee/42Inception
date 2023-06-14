@@ -20,8 +20,8 @@ fi
 echo "\
 --------------------
 
-@mariadb ready
-@port:3306
+MariaDB configuration has been completed.
+Port: 3306
 
 --------------------"
 

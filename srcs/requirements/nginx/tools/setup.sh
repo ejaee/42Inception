@@ -8,8 +8,8 @@ openssl req -newkey rsa:4096 -days 30 -nodes -x509 \
 echo "\
 --------------------
 
-@nginx ready
-@port:443
+Nginx configuration has been completed.
+Port: 443
 
 --------------------"
 

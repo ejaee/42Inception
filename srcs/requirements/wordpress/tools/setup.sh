@@ -23,8 +23,8 @@ wp-cli theme activate astra --allow-root
 echo "\
 --------------------
 
-@wordpress ready
-@port:9000
+Wordpress setup has been completed.
+Port: 9000
 
 --------------------"
 
