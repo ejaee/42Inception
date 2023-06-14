@@ -17,7 +17,7 @@ if [ "$(uname)" == "Darwin" ]; then
     volume_path=/Users/ejachoi/goinfree/docker_study/inception2/data # 이건 내 mac에서 테스트할 경로
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Do something under GNU/Linux platform
-    volume_path=/home/${intra_id}/data
+    volume_path=/home/ejachoi/data
 fi
 # * ----------------------------------------------------------
 wordpress_path=${volume_path}/wordpress
@@ -32,7 +32,7 @@ mariadb_path=${volume_path}/mariadb
 # (1) Go to the file /etc/hosts
 hosts_path="/etc/hosts"
 # (2) Add the following line : "127.0.01 {intra}.42.fr"
-conf="127.0.0.1 ${intra_id}.42.fr"
+conf="127.0.0.1 ejachoi.42.fr"
 # * ----------------------------------------------------------
 
 
@@ -47,7 +47,7 @@ fi
 
 if [ "intra_id" = $1 ]
 then
-    echo ${intra_id}
+    echo ejachoi
 elif [ "wordpress_path" = $1 ]
 then
     echo ${wordpress_path}
