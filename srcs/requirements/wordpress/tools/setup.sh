@@ -20,12 +20,11 @@ wp-cli theme install astra --allow-root
 wp-cli theme update astra --allow-root
 wp-cli theme activate astra --allow-root
 
-echo "\
+cat <<EOM
 --------------------
-
 Wordpress setup has been completed.
 Port: 9000
-
---------------------"
+--------------------
+EOM
 
 exec /usr/sbin/php-fpm7.3 -F

@@ -5,12 +5,11 @@ openssl req -newkey rsa:4096 -days 30 -nodes -x509 \
     -keyout "/etc/ssl/${INTRA_ID}.42.fr.key" \
     -out "/etc/ssl/${INTRA_ID}.42.fr.crt" 2>/dev/null
 
-echo "\
+cat <<EOM
 --------------------
-
 Nginx configuration has been completed.
 Port: 443
-
---------------------"
+--------------------
+EOM
 
 exec nginx -g 'daemon off;'

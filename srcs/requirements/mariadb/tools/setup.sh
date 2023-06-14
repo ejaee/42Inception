@@ -17,12 +17,11 @@ flush privileges;
 EOF
 fi
 
-echo "\
+cat <<EOM
 --------------------
-
 MariaDB configuration has been completed.
 Port: 3306
-
---------------------"
+--------------------
+EOM
 
 exec mysqld --datadir=/var/lib/mysql
