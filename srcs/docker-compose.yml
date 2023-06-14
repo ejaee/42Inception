@@ -6,60 +6,56 @@ services:
     container_name: mariadb
     build: ./requirements/mariadb
     volumes:
-      - mariadb-volume:/var/lib/mysql
-    
+      - md-data:/var/lib/mysql
     networks:
-      - intra-network
-    restart: always
+      - intra
     env_file:
       - .env
+    restart: always
 
   wordpress:
     depends_on:
       - mariadb
-    restart: always
-    build: requirements/wordpress
     container_name: wordpress
-    image: wordpress
-    expose:
-      - "9000"
+    build: requirements/wordpress
     volumes:
-      - wordpress-volume:/var/www/html/wordpress
+      - wp-data:/var/www/html/wordpress
     networks:
-      - intra-network
+      - intra
     env_file:
       - .env
+    restart: always
+    expose:
+      - "9000"
 
   nginx:
     depends_on:
       - wordpress
-    restart: always 
-    build: requirements/nginx
     container_name: nginx
-    image: nginx
-    ports:
-      - "443:443"
+    build: requirements/nginx
     volumes:
-      - wordpress-volume:/var/www/html/wordpress
+      - wp-data:/var/www/html/wordpress
     networks:
-      - intra-network
+      - intra
     env_file:
       - .env
+    restart: always 
+    ports:
+      - "443:443"
 
 networks:
-  intra-network:
+  intra:
     driver: bridge
-    name: intra-network
+    name: intra
     
-
 volumes:
-  mariadb-volume:
+  md-data:
     driver: local
     driver_opts:
       type: none
       o: bind
       device: /home/ejachoi/data/mariadb
-  wordpress-volume:
+  wp-data:
     driver: local
     driver_opts:
       type: none
