@@ -1,5 +1,8 @@
 #!/bin/sh
 
+GREEN='\033[1;32m'
+RESET='\033[0m'
+
 if [ ! -d "/var/lib/mysql/$MYSQL_DB" ]; then
   mysql_install_db --datadir=/var/lib/mysql --auth-root-authentication-method=normal >/dev/null
   mysqld --bootstrap << EOF
@@ -18,10 +21,10 @@ EOF
 fi
 
 cat <<EOM
---------------------
+${GREEN}--------------------
 MariaDB configuration has been completed.
 Port: 3306
---------------------
+--------------------${RESET}
 EOM
 
 exec mysqld --datadir=/var/lib/mysql
