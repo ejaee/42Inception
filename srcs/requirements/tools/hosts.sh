@@ -14,10 +14,10 @@ if [ ${LINE} -eq 0 ]; then
     GREEN='\033[1;32m'
     RESET='\033[0m'
     echo -e "${RED}--------------------
-@${hosts_path} error
+Error: Failed to add ${conf} to ${hosts_path}.
 --------------------${RESET}" >&2
 else
     echo -e "${GREEN}--------------------
-@${hosts_path} ready
+Success: ${conf} added to ${hosts_path}.
 --------------------${RESET}"
 fi
