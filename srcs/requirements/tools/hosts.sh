@@ -1,5 +1,9 @@
 #!/bin/bash
 
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+RESET='\033[0m'
+
 conf="127.0.0.1 ejachoi.42.fr"
 hosts_path="/etc/hosts"
 
@@ -10,9 +14,6 @@ fi
 LINE=$(grep -cx "${conf}" "${hosts_path}")
 
 if [ ${LINE} -eq 0 ]; then
-    RED='\033[1;31m'
-    GREEN='\033[1;32m'
-    RESET='\033[0m'
     echo -e "${RED}--------------------
 Error: Failed to add ${conf} to ${hosts_path}.
 --------------------${RESET}" >&2
