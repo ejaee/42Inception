@@ -28,18 +28,18 @@ fi
 if [ "intra_id" = $1 ]
 then
     echo ejachoi
-elif [ "wordpress_path" = $1 ]
-then
-    echo ${wordpress_path}
-elif [ "mariadb_path" = $1 ]
-then
-    echo ${mariadb_path}
-# elif [ "hosts_path" = $1 ]
+# elif [ "wordpress_path" = $1 ]
 # then
-#     echo ${hosts_path}
-# elif [ "conf" = $1 ]
+#     echo ${wordpress_path}
+# elif [ "mariadb_path" = $1 ]
 # then
-#     echo ${conf}
+    # echo ${mariadb_path}
+elif [ "hosts_path" = $1 ]
+then
+    echo ${hosts_path}
+elif [ "conf" = $1 ]
+then
+    echo ${conf}
 else
     echo "NOT FOUND INFO" 1>&2
 fi
