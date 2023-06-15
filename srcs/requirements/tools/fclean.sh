@@ -2,8 +2,8 @@
 
 wordpress_path=$($(pwd)/srcs/requirements/tools/info.sh wordpress_path)
 mariadb_path=$($(pwd)/srcs/requirements/tools/info.sh mariadb_path)
-conf=$($(pwd)/srcs/requirements/tools/info.sh conf)
-hosts_path=$($(pwd)/srcs/requirements/tools/info.sh hosts_path)
+conf="127.0.0.1 ejachoi.42.fr"
+hosts_path="/etc/hosts"
 
 rm -rf ${wordpress_path}
 rm -rf ${mariadb_path}

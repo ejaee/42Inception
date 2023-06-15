@@ -1,7 +1,7 @@
 #!/bin/bash
 
-conf=$($(pwd)/srcs/requirements/tools/info.sh conf)
-hosts_path=$($(pwd)/srcs/requirements/tools/info.sh hosts_path)
+conf="127.0.0.1 ejachoi.42.fr"
+hosts_path="/etc/hosts"
 
 if [ ! -e ${hosts_path} ]; then
     touch ${hosts_path}
