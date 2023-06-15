@@ -1,9 +1,9 @@
 
 DOCKER_COMPOSE_FILE = ./srcs/docker-compose.yml
 
-all: build
+all: up
 
-build:
+up:
 	@bash srcs/requirements/tools/volume.sh
 	@bash srcs/requirements/tools/hosts.sh
 	docker compose -f $(DOCKER_COMPOSE_FILE) up -d --build
