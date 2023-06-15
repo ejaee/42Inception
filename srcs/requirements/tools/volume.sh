@@ -6,8 +6,6 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 wordpress_path="${volume_path}/wordpress"
 mariadb_path="${volume_path}/mariadb"
-# wordpress_path=$($(pwd)/srcs/requirements/tools/info.sh wordpress_path)
-# mariadb_path=$($(pwd)/srcs/requirements/tools/info.sh mariadb_path)
 
 if [ ! -d ${wordpress_path} ]; then
     mkdir -p ${wordpress_path}
