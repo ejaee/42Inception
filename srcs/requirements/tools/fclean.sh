@@ -2,19 +2,24 @@
 
 wordpress_path=$($(pwd)/srcs/requirements/tools/info.sh wordpress_path)
 mariadb_path=$($(pwd)/srcs/requirements/tools/info.sh mariadb_path)
-conf="127.0.0.1 ejachoi.42.fr"
-hosts_path="/etc/hosts"
+conf=$($(pwd)/srcs/requirements/tools/info.sh conf)
+hosts_path=$($(pwd)/srcs/requirements/tools/info.sh hosts_path)
 
-# WordPress 경로 및 MariaDB 경로를 삭제합니다.
-rm -rf "${wordpress_path}"
-rm -rf "${mariadb_path}"
+rm -rf ${wordpress_path}
+rm -rf ${mariadb_path}
 
-# 호스트 파일에서 conf 설정을 삭제합니다.
-sed -i "/${conf}/d" "${hosts_path}"
+# 리눅스와 mac의 sed 사용법이 다르다...
+# * ----------------------------------------------------------
+if [ "$(uname)" == "Darwin" ]; then
+    sed -i '' "/${conf}/d" ${hosts_path}
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    sed -i "/${conf}/d" ${hosts_path}
+fi
+# * ----------------------------------------------------------
 
 echo "\
 --------------------
 
-클린업 완료
+@fclean done
 
 --------------------"
